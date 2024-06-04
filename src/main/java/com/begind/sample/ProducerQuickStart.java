@@ -6,7 +6,6 @@ import org.apache.kafka.clients.producer.*;
 
 import java.util.Properties;
 
-@Slf4j
 public class ProducerQuickStart {
 
     public static void main(String[] args) {
@@ -30,12 +29,11 @@ public class ProducerQuickStart {
         //2. 生产者对象
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(prop);
         //封装发送的消息
-        ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>(KafkaConstants.INPUT_TOPIC, "key_001", "hello kafka");
-
+        ProducerRecord<String, String> producerRecord1 = new ProducerRecord<>(KafkaConstants.INPUT_TOPIC, "key_001", "hello kafka");
+        ProducerRecord<String, String> producerRecord2 = new ProducerRecord<>(KafkaConstants.INPUT_TOPIC, "key_002", "hello world");
         //3. 发送消息
-        for (int i = 0; i < 5; i++) {
-            producer.send(producerRecord);
-        }
+        producer.send(producerRecord1);
+        producer.send(producerRecord2);
 
         //4. 关闭消息通道  必须关闭，否则消息发不出去
         producer.close();

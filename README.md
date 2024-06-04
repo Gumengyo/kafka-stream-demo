@@ -16,6 +16,11 @@
 ./kafka-topics.sh --create --bootstrap-server localhost:9092 --topic streams-wordcount-output --replication-factor 1 --partitions 1
 ```
 
+2. 测试发送
 ![img_1.png](docs/img/img_1.png)
-![img.png](docs/img/img.png)
-![img.png](docs/img/img.png)
+
+3. 查看结果
+
+访问[http://localhost:9000/](http://localhost:9000/)，在Kafdrop查看Kafka消息
+![img.png](docs/img/test1.png)
+![img.png](docs/img/test2.png)
